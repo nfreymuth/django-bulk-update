@@ -44,7 +44,7 @@ def bulk_update(objs, update_fields=None, exclude_fields=None,
 
         if pks:
             values = ', '.join(
-                map(lambda v: v['sql'].format(when=' END)::%s' % v['type']),
+                map(lambda v: v['sql'].format(when=' END)::%s' % v['type'].split('CHECK')[0]),
                     case_clauses.values()))
             paramaters = [item for v in case_clauses.values()
                           for item in v['params']]
